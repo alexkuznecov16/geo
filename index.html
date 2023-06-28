@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="myButton">Click</button>
+
+    <script>
+        document.getElementById('myButton').addEventListener('click', () => {
+            if ('geolocation' in navigator){
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const { coords } = position;
+                    console.log(coords.latitude, coords.longitude);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
