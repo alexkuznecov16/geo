@@ -6,14 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="myButton">Click</button>
+    <input type="text" id="name" placeholder="name">
+    <input type="text" id="age" placeholder="age">
+    <button id="myButton">Geolocation</button>
 
     <script>
+        let name = document.getElementById('name');
+        let age = document.getElementById('age');
         document.getElementById('myButton').addEventListener('click', () => {
             if ('geolocation' in navigator){
                 navigator.geolocation.getCurrentPosition((position) => {
                     const { coords } = position;
-                    console.log(coords.latitude, coords.longitude);
+                    const allCoords = (coords.latitude, coords.longitude);
+
+                    setTimeout(function(){
+                        const user = {
+                            userName: name.value,
+                            userAge: age.value,
+                            userGeolocation: allCoords,
+                        };
+
+                        console.log(user)
+                    }, 2000)
                 });
             }
         });
